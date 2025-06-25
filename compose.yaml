@@ -1,0 +1,43 @@
+services:
+  api:
+    build: ./MovieCritic-API
+    container_name: moviecritic_api
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./MovieCritic-API/.env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  frontend:
+    build: ./react_app
+    container_name: moviecritic_frontend
+    ports:
+      - "3002:3002"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+  mysql:
+    image: inf24dw2g34/moviecritic-db
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h127.0.0.1 -P3306 -p${DB_PASS}"]
+      interval: 10s
+      timeout: 30s
+      retries: 10
+
+networks:
+  app-network:
+    driver: bridge
