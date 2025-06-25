@@ -1,6 +1,6 @@
 services:
   api:
-    build: MovieCritic-API/.
+    image: inf24dw2g34/moviecritic-api2:latest
     container_name: moviecritic_api
     ports:
       - "3000:3000"
@@ -10,7 +10,7 @@ services:
     networks:
       - app-network
     env_file:
-      - ./MovieCritic-API/.env
+      - ./.env
 
   frontend:
     image: inf24dw2g34/moviecritic-frontend:latest
@@ -26,14 +26,14 @@ services:
     image: inf24dw2g34/moviecritic-db
     container_name: mysql_db
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: moviecritic
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
     ports:
       - "3306:3306"
     networks:
       - app-network
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h127.0.0.1 -P3306 -psecret"]
+      test: ["CMD-SHELL", "mysqladmin ping -h127.0.0.1 -P3306 -p${DB_PASS}"]
       interval: 10s
       timeout: 30s
       retries: 10
