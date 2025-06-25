@@ -1,16 +1,16 @@
 services:
   api:
-    image: inf24dw2g34/moviecritic-api2:latest
+    build: MovieCritic-API/.
     container_name: moviecritic_api
     ports:
       - "3000:3000"
-    env_file:
-      - ./MovieCritic-API/.env
     depends_on:
       mysql:
         condition: service_healthy
     networks:
       - app-network
+    env_file:
+      - ./MovieCritic-API/.env
 
   frontend:
     image: inf24dw2g34/moviecritic-frontend:latest
