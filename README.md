@@ -49,9 +49,11 @@ docker-compose -f compose.yaml up --build -d
 After running the project,
 
 - Access the React app at:
+
 [http://localhost:3002](http://localhost:3002)
 
-- Access the Swagger docs at:  
+- Access the Swagger docs at:
+
 [http://localhost:3000/docs](http://localhost:3000/docs)
 
 
@@ -65,6 +67,7 @@ After running the project,
 ## DockerHub Images
 
 API Image: [inf24dw2g34/moviecritic-api](https://hub.docker.com/repository/docker/inf24dw2g34/moviecritic-api/general)
+
 Database Image: [inf24dw2g34/moviecritic-db](https://hub.docker.com/repository/docker/inf24dw2g34/moviecritic-db/general) (Contains preloaded data)
 
 ## Team
