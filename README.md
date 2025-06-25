@@ -66,7 +66,9 @@ After running the project,
 
 ## DockerHub Images
 
-API Image: [inf24dw2g34/moviecritic-api](https://hub.docker.com/repository/docker/inf24dw2g34/moviecritic-api/general)
+React Image: [inf24dw2g34/moviecritic-frontend](https://hub.docker.com/repository/docker/inf24dw2g34/moviecritic-frontend)
+
+API Image: [inf24dw2g34/moviecritic2-api](https://hub.docker.com/repository/docker/inf24dw2g34/moviecritic-api2/general)
 
 Database Image: [inf24dw2g34/moviecritic-db](https://hub.docker.com/repository/docker/inf24dw2g34/moviecritic-db/general) (Contains preloaded data)
 
